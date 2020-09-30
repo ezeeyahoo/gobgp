@@ -1,5 +1,7 @@
 language: go
 
+arch: ppc64le
+
 _unittest: &_unittest
   go: "1.13"
   script:
@@ -30,7 +32,7 @@ _docker: &_docker
     - test $TRAVIS_OS_NAME == "linux" && sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
     - test $TRAVIS_OS_NAME == "linux" && sudo sysctl -w net.ipv6.conf.docker0.disable_ipv6=1
     - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty main"
+    - sudo add-apt-repository "deb https://download.docker.com/linux/ubuntu trusty main"
     - sudo apt-get update
     - sudo apt-get -y --allow-downgrades install docker-ce=17.03.0~ce-0~ubuntu-trusty
   install:
